@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.patach.patachoux">
+
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="17" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/logo"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/logo"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Patachoux">
+        <activity
+            android:name=".Screen.UpdateProductActivity"
+            android:exported="false"
+            android:theme="@style/Theme.Patachoux.NoActionBar" />
+        <activity
+            android:name=".Screen.UpdateAdminPasswordActivity"
+            android:exported="false"
+            android:theme="@style/Theme.Patachoux.NoActionBar" />
+        <activity
+            android:name=".Screen.SuplierActivity"
+            android:exported="false"
+            android:theme="@style/Theme.Patachoux.NoActionBar" />
+        <activity
+            android:name=".Screen.AddSuplierActivity"
+            android:exported="false"
+            android:theme="@style/Theme.Patachoux.NoActionBar" />
+        <activity
+            android:name=".Screen.AddProductActivity"
+            android:exported="false"
+            android:theme="@style/Theme.Patachoux.NoActionBar" />
+        <activity
+            android:name=".Screen.LoginActivity"
+            android:exported="false"
+            android:theme="@style/Theme.Patachoux.NoActionBar" />
+        <activity
+            android:name=".Screen.SplashActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Patachoux.NoActionBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Screen.MainActivity"
+            android:exported="false" />
+    </application>
+
+</manifest>

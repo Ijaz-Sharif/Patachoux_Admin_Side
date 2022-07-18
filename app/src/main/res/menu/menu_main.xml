@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/_suplier"
+        android:title="Suplier"/>
+    <item
+        android:id="@+id/add_sub_Admin"
+        android:title="Add Sub Admin"/>
+    <item
+        android:id="@+id/setting_account"
+        android:title="Setting"/>
+    <item
+        android:id="@+id/view_order"
+        android:title="View Order"/>
+    <item
+        android:id="@+id/logoutUser"
+        android:title="Logout"/>
+</menu>
