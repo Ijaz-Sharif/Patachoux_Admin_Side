@@ -26,8 +26,11 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
@@ -39,6 +42,7 @@ import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
 import com.patach.patachoux.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class AddProductActivity extends AppCompatActivity {
@@ -48,6 +52,7 @@ public class AddProductActivity extends AppCompatActivity {
     StorageReference mRef;
     private Uri imgUri;
     private Dialog loadingDialog;
+    ArrayList<String> productList =new ArrayList<String>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,6 +72,12 @@ public class AddProductActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onStart() {
+        getBreadProductList();
+        super.onStart();
+    }
+
     @RequiresApi(api = Build.VERSION_CODES.GINGERBREAD)
     public void saveProduct(View view) {
 
@@ -79,6 +90,9 @@ public class AddProductActivity extends AppCompatActivity {
         }
         else if(product_price.getText().toString().trim().isEmpty()){
             product_price.setError("required");
+        }
+        else if(productList.contains((product_name.getText().toString().trim()))){
+            Toast.makeText(AddProductActivity.this, "name already exist" , Toast.LENGTH_LONG).show();
         }
         else{
             loadingDialog.show();
@@ -196,5 +210,43 @@ public class AddProductActivity extends AppCompatActivity {
         ContentResolver cr=getContentResolver();
         MimeTypeMap mime=MimeTypeMap.getSingleton();
         return mime.getExtensionFromMimeType(cr.getType(uri));
+    }
+
+
+    public void getBreadProductList(){
+        loadingDialog.show();
+        productList.clear();
+        myRef= FirebaseDatabase.getInstance().getReference("Products").child("Bread");
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for(DataSnapshot dataSnapshot1:dataSnapshot.getChildren()){
+                    productList.add(dataSnapshot1.child("ProductName").getValue(String.class));
+                }
+                getPastryProductList();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+    public void getPastryProductList(){
+        myRef=  FirebaseDatabase.getInstance().getReference("Products").child("Pastry");
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for(DataSnapshot dataSnapshot1:dataSnapshot.getChildren()){
+                    productList.add(dataSnapshot1.child("ProductName").getValue(String.class));
+                }
+                loadingDialog.dismiss();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 }

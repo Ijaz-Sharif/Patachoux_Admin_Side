@@ -1,5 +1,9 @@
 package com.patach.patachoux.Screen;
 
+import static com.patach.patachoux.Utils.Constant.setUserLoginStatus;
+import static com.patach.patachoux.Utils.Constant.setUsername;
+
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -16,15 +20,21 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.patach.patachoux.R;
+
+import java.util.ArrayList;
 
 public class AddSuplierActivity extends AppCompatActivity {
     private Dialog loadingDialog;
     private EditText etRegisterEmail,et_user_name, etRegisterPassword, etRegisterConfirmPassword;
     private FirebaseAuth firebaseAuth;
     DatabaseReference myRef;
+    ArrayList<String> suplierList =new ArrayList<String>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +52,12 @@ public class AddSuplierActivity extends AppCompatActivity {
         etRegisterPassword = findViewById(R.id.et_register_password);
         etRegisterConfirmPassword = findViewById(R.id.et_register_confirm_password);
         et_user_name = findViewById(R.id.et_user_name);
+    }
+
+    @Override
+    protected void onStart() {
+        getSuplierList();
+        super.onStart();
     }
 
     @RequiresApi(api = Build.VERSION_CODES.GINGERBREAD)
@@ -67,9 +83,15 @@ public class AddSuplierActivity extends AppCompatActivity {
     }
 
     private void requestRegister(String email, String password) {
-        loadingDialog.show();
-        firebaseAuth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(getCreateUserWithEmailOnClickListener(email));
+        if(suplierList.contains( et_user_name.getText().toString())){
+            Toast.makeText(AddSuplierActivity.this, "name already exist" , Toast.LENGTH_LONG).show();
+        }
+        else {
+            loadingDialog.show();
+            firebaseAuth.createUserWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(getCreateUserWithEmailOnClickListener(email));
+        }
+
     }
     private OnCompleteListener<AuthResult> getCreateUserWithEmailOnClickListener(String email) {
         return task -> {
@@ -87,5 +109,26 @@ public class AddSuplierActivity extends AppCompatActivity {
         myRef.child("Mail").setValue(etRegisterEmail.getText().toString());
         loadingDialog.dismiss();
         finish();
+    }
+
+    public void getSuplierList(){
+        loadingDialog.show();
+        suplierList.clear();
+        myRef=  FirebaseDatabase.getInstance().getReference().child("Suplier");
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for(DataSnapshot dataSnapshot1:dataSnapshot.getChildren()){
+                   suplierList.add(dataSnapshot1.child("Name").getValue(String.class));
+                }
+                loadingDialog.dismiss();
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 }
