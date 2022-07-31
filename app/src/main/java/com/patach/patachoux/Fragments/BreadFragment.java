@@ -28,6 +28,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.patach.patachoux.Model.Product;
 import com.patach.patachoux.R;
 import com.patach.patachoux.Screen.AddProductActivity;
+import com.patach.patachoux.Screen.UpdateProductActivity;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -141,7 +142,12 @@ public class BreadFragment extends Fragment {
                                 getProductsData();
                             } else if (options[item].equals("Update")) {
 
-
+                                  startActivity(new Intent(getContext(), UpdateProductActivity.class)
+                                          .putExtra("type","Bread")
+                                          .putExtra("price",productArrayList.get(position).getProductPrice())
+                                          .putExtra("description",productArrayList.get(position).getProductDes())
+                                          .putExtra("pic",productArrayList.get(position).getProductImage())
+                                          .putExtra("name",productArrayList.get(position).getProductName()));
 
 
 
