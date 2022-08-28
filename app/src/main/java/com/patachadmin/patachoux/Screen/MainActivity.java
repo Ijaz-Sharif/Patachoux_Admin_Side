@@ -1,42 +1,20 @@
-package com.patach.patachoux.Screen;
+package com.patachadmin.patachoux.Screen;
 
-import static com.patach.patachoux.Utils.Constant.setUserLoginStatus;
+import static com.patachadmin.patachoux.Utils.Constant.setUserLoginStatus;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
-import android.annotation.SuppressLint;
-import android.app.Dialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.google.android.material.tabs.TabLayout;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-import com.patach.patachoux.Adapter.ViewPagerAdapter;
-import com.patach.patachoux.Fragments.BreadFragment;
-import com.patach.patachoux.Fragments.PasteryFragment;
-import com.patach.patachoux.Model.Product;
-import com.patach.patachoux.R;
-import com.squareup.picasso.Picasso;
-
-import java.util.ArrayList;
+import com.patachadmin.patachoux.Adapter.ViewPagerAdapter;
+import com.patachadmin.patachoux.Fragments.BreadFragment;
+import com.patachadmin.patachoux.Fragments.PasteryFragment;
+import com.patachadmin.patachoux.R;
 
 public class MainActivity extends AppCompatActivity {
 

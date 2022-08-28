@@ -1,4 +1,4 @@
-package com.patach.patachoux.Model;
+package com.patachadmin.patachoux.Model;
 
 public class Product {
 

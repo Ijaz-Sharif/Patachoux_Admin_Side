@@ -1,13 +1,13 @@
-package com.patach.patachoux.Screen;
+package com.patachadmin.patachoux.Screen;
 
-import static com.patach.patachoux.Utils.Constant.getUserLoginStatus;
+import static com.patachadmin.patachoux.Utils.Constant.getUserLoginStatus;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.patach.patachoux.R;
+import com.patachadmin.patachoux.R;
 
 public class SplashActivity extends AppCompatActivity {
 

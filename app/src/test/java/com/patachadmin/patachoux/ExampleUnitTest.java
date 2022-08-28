@@ -1,4 +1,4 @@
-package com.patach.patachoux;
+package com.patachadmin.patachoux;
 
 import org.junit.Test;
 

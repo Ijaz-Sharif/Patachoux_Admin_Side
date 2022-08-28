@@ -1,4 +1,4 @@
-package com.patach.patachoux.Fragments;
+package com.patachadmin.patachoux.Fragments;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
@@ -25,10 +25,10 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.patach.patachoux.Model.Product;
-import com.patach.patachoux.R;
-import com.patach.patachoux.Screen.AddProductActivity;
-import com.patach.patachoux.Screen.UpdateProductActivity;
+import com.patachadmin.patachoux.Model.Product;
+import com.patachadmin.patachoux.R;
+import com.patachadmin.patachoux.Screen.AddProductActivity;
+import com.patachadmin.patachoux.Screen.UpdateProductActivity;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;

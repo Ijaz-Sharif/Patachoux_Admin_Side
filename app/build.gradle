@@ -7,7 +7,7 @@ android {
     compileSdk 32
 
     defaultConfig {
-        applicationId "com.patach.patachoux"
+        applicationId "com.patachadmin.patachou"
         minSdk 21
         targetSdk 32
         versionCode 1

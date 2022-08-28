@@ -1,4 +1,4 @@
-package com.patach.patachoux.Utils;
+package com.patachadmin.patachoux.Utils;
 
 import android.content.Context;
 import android.content.SharedPreferences;

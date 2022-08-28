@@ -1,4 +1,4 @@
-package com.patach.patachoux.Screen;
+package com.patachadmin.patachoux.Screen;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -40,7 +40,7 @@ import com.karumi.dexter.MultiplePermissionsReport;
 import com.karumi.dexter.PermissionToken;
 import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
-import com.patach.patachoux.R;
+import com.patachadmin.patachoux.R;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,34 +1,28 @@
-package com.patach.patachoux.Screen;
+package com.patachadmin.patachoux.Screen;
 
-import static com.patach.patachoux.Utils.Constant.setAdminEmail;
-import static com.patach.patachoux.Utils.Constant.setAdminPassword;
-import static com.patach.patachoux.Utils.Constant.setUserLoginStatus;
+import static com.patachadmin.patachoux.Utils.Constant.setAdminEmail;
+import static com.patachadmin.patachoux.Utils.Constant.setAdminPassword;
+import static com.patachadmin.patachoux.Utils.Constant.setUserLoginStatus;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Dialog;
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.patach.patachoux.R;
+import com.patachadmin.patachoux.R;
 
 public class LoginActivity extends AppCompatActivity {
     private EditText etLoginEmail, etLoginPassword;

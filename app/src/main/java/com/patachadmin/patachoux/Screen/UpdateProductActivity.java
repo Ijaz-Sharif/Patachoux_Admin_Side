@@ -1,4 +1,4 @@
-package com.patach.patachoux.Screen;
+package com.patachadmin.patachoux.Screen;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -25,7 +25,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
-import com.patach.patachoux.R;
+import com.patachadmin.patachoux.R;
 import com.squareup.picasso.Picasso;
 
 public class UpdateProductActivity extends AppCompatActivity {

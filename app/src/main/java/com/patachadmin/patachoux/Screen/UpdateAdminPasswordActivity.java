@@ -1,28 +1,21 @@
-package com.patach.patachoux.Screen;
+package com.patachadmin.patachoux.Screen;
 
-import static com.patach.patachoux.Utils.Constant.getAdminEmail;
-import static com.patach.patachoux.Utils.Constant.getAdminPassword;
-import static com.patach.patachoux.Utils.Constant.setUserLoginStatus;
+import static com.patachadmin.patachoux.Utils.Constant.getAdminEmail;
+import static com.patachadmin.patachoux.Utils.Constant.getAdminPassword;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Dialog;
-import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.Toast;
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-import com.patach.patachoux.R;
+import com.patachadmin.patachoux.R;
 
 public class UpdateAdminPasswordActivity extends AppCompatActivity {
     private EditText etLoginEmail, etLoginPassword;

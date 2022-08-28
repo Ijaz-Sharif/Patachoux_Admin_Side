@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.patach.patachoux">
+    package="com.patachadmin.patachoux">
 
     <uses-sdk
         android:minSdkVersion="8"
@@ -18,31 +18,31 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Patachoux">
         <activity
-            android:name=".Screen.UpdateProductActivity"
+            android:name="com.patachadmin.patachoux.Screen.UpdateProductActivity"
             android:exported="false"
             android:theme="@style/Theme.Patachoux.NoActionBar" />
         <activity
-            android:name=".Screen.UpdateAdminPasswordActivity"
+            android:name="com.patachadmin.patachoux.Screen.UpdateAdminPasswordActivity"
             android:exported="false"
             android:theme="@style/Theme.Patachoux.NoActionBar" />
         <activity
-            android:name=".Screen.SuplierActivity"
+            android:name="com.patachadmin.patachoux.Screen.SuplierActivity"
             android:exported="false"
             android:theme="@style/Theme.Patachoux.NoActionBar" />
         <activity
-            android:name=".Screen.AddSuplierActivity"
+            android:name="com.patachadmin.patachoux.Screen.AddSuplierActivity"
             android:exported="false"
             android:theme="@style/Theme.Patachoux.NoActionBar" />
         <activity
-            android:name=".Screen.AddProductActivity"
+            android:name="com.patachadmin.patachoux.Screen.AddProductActivity"
             android:exported="false"
             android:theme="@style/Theme.Patachoux.NoActionBar" />
         <activity
-            android:name=".Screen.LoginActivity"
+            android:name="com.patachadmin.patachoux.Screen.LoginActivity"
             android:exported="false"
             android:theme="@style/Theme.Patachoux.NoActionBar" />
         <activity
-            android:name=".Screen.SplashActivity"
+            android:name="com.patachadmin.patachoux.Screen.SplashActivity"
             android:exported="true"
             android:theme="@style/Theme.Patachoux.NoActionBar" >
             <intent-filter>
@@ -52,7 +52,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Screen.MainActivity"
+            android:name="com.patachadmin.patachoux.Screen.MainActivity"
             android:exported="false" />
     </application>
 
