@@ -14,6 +14,7 @@ import com.google.android.material.tabs.TabLayout;
 import com.patachadmin.patachoux.Adapter.ViewPagerAdapter;
 import com.patachadmin.patachoux.Fragments.BreadFragment;
 import com.patachadmin.patachoux.Fragments.PasteryFragment;
+import com.patachadmin.patachoux.Order.SplierMainActivity;
 import com.patachadmin.patachoux.R;
 
 public class MainActivity extends AppCompatActivity {
@@ -61,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, UpdateAdminPasswordActivity.class));
                 return true;
                 case R.id.view_order:
-
+                    startActivity(new Intent(MainActivity.this, SplierMainActivity.class));
                 return true;
 
             default:
