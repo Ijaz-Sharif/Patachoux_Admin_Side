@@ -5,11 +5,16 @@ import static com.patachadmin.patachoux.Order.SplierMainActivity.suplierOrderLis
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -38,6 +43,7 @@ public class SuplierSubOrderActivity extends AppCompatActivity {
 
     TextView user_name,user_address,user_number,suplier_name,price_text;
     int index=0;
+    String dial;
     int totalPrice=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +62,12 @@ public class SuplierSubOrderActivity extends AppCompatActivity {
         loadingDialog.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
         recyclerView=findViewById(R.id.recylerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+    user_number.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            makePhoneCall();
+        }
+    });
     }
     @Override
     protected void onStart() {
@@ -63,12 +75,32 @@ public class SuplierSubOrderActivity extends AppCompatActivity {
         user_address.setText("Address : "+suplierOrderList.get(index).getUserAddress());
         user_number.setText("Number : "+suplierOrderList.get(index).getUserNumber());
         user_name.setText("Name : "+suplierOrderList.get(index).getUserName());
+        dial="tel:" +suplierOrderList.get(index).getUserNumber();
           if(!suplierOrderList.get(index).getSuplierName().equals("none")){
               suplier_name.setText("Suplier Name : "+suplierOrderList.get(index).getSuplierName());
           }
 
         getProductsData();
         super.onStart();
+    }
+    private void makePhoneCall(){
+        if(ContextCompat.checkSelfPermission(SuplierSubOrderActivity.this,
+                android.Manifest.permission.CALL_PHONE)!= PackageManager.PERMISSION_GRANTED){
+            ActivityCompat.requestPermissions(SuplierSubOrderActivity.this,
+                    new String[]{  android.Manifest.permission.CALL_PHONE},1);
+        }
+        else {
+            startActivity(new Intent(Intent.ACTION_CALL, Uri.parse(dial)));
+        }
+    }
+    @SuppressLint("MissingSuperCall")
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        if(requestCode==requestCode){
+            if(grantResults.length>0&&grantResults[0]==PackageManager.PERMISSION_GRANTED){
+                makePhoneCall();
+            }
+        }
     }
     public void getProductsData(){
         databaseReference = FirebaseDatabase.getInstance().getReference().child("Order")

@@ -5,6 +5,9 @@
         android:id="@+id/_suplier"
         android:title="Suplier"/>
     <item
+        android:id="@+id/_user"
+        android:title="User"/>
+    <item
         android:id="@+id/add_sub_Admin"
         android:title="Add Sub Admin"/>
     <item

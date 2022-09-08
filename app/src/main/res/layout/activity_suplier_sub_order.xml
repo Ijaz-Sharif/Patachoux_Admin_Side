@@ -68,6 +68,8 @@
 
         <TextView
             android:id="@+id/user_number"
+            android:drawableRight="@drawable/ic_baseline_local_phone_24"
+            android:drawablePadding="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center" />

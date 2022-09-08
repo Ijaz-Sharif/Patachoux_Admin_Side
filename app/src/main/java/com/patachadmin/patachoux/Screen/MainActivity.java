@@ -57,6 +57,9 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             case R.id._suplier:
                 startActivity(new Intent(MainActivity.this, SuplierActivity.class));
+
+            case R.id._user:
+                startActivity(new Intent(MainActivity.this, UserActivity.class));
                 return true;
                 case R.id.setting_account:
                 startActivity(new Intent(MainActivity.this, UpdateAdminPasswordActivity.class));
