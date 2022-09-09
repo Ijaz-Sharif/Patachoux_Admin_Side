@@ -61,9 +61,6 @@ public class MainActivity extends AppCompatActivity {
             case R.id._user:
                 startActivity(new Intent(MainActivity.this, UserActivity.class));
                 return true;
-                case R.id.setting_account:
-                startActivity(new Intent(MainActivity.this, UpdateAdminPasswordActivity.class));
-                return true;
                 case R.id.view_order:
                     startActivity(new Intent(MainActivity.this, SplierMainActivity.class));
                 return true;

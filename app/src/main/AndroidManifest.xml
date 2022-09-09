@@ -19,6 +19,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Patachoux">
         <activity
+            android:name=".Admin.AddSubAdminActivity"
+            android:exported="true" />
+        <activity
+            android:name=".Admin.AdminMainActivity"
+            android:exported="true" />
+        <activity
             android:name=".Screen.UserActivity"
             android:exported="true" />
         <activity

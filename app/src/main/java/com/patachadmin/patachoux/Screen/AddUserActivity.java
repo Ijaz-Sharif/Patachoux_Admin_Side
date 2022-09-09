@@ -236,6 +236,7 @@ public class AddUserActivity extends AppCompatActivity {
         StorageReference storageReference = mRef.child(System.currentTimeMillis() + "." + getFileEx(imgUri));
         storageReference.putFile(imgUri)
                 .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                    @RequiresApi(api = Build.VERSION_CODES.GINGERBREAD)
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
 
@@ -247,6 +248,9 @@ public class AddUserActivity extends AppCompatActivity {
                         myRef.child("Mail").setValue(etRegisterEmail.getText().toString());
                         myRef.child("Address").setValue(et_register_address.getText().toString());
                         myRef.child("PhoneNumber").setValue(et_user_number.getText().toString());
+                        myRef.child("City").setValue(et_city.getText().toString());
+                        myRef.child("PostalCode").setValue(et_postal_code.getText().toString());
+                        myRef.child("SecretCode").setValue(et_code.getText().toString());
                         myRef.child("UserImage").setValue(downloadUrl.toString());
                         loadingDialog.dismiss();
                         Toast.makeText(AddUserActivity.this,"Registration successful",Toast.LENGTH_LONG).show();

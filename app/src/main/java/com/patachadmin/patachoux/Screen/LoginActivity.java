@@ -17,21 +17,28 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.patachadmin.patachoux.Admin.AdminMainActivity;
 import com.patachadmin.patachoux.R;
 
 public class LoginActivity extends AppCompatActivity {
     private EditText etLoginEmail, etLoginPassword;
     DatabaseReference myRef;
     private Dialog loadingDialog;
+    private FirebaseAuth firebaseAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        firebaseAuth = FirebaseAuth.getInstance();
 
 
         /////loading dialog
@@ -78,12 +85,25 @@ public class LoginActivity extends AppCompatActivity {
 
                     setAdminEmail(LoginActivity.this,email);
                     setAdminPassword(LoginActivity.this,password);
-                    startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                    startActivity(new Intent(getApplicationContext(), AdminMainActivity.class));
                     finish();
 
-                } else {
-                    loadingDialog.dismiss();
-                    Toast.makeText(LoginActivity.this, "Invalid Email or Password", Toast.LENGTH_SHORT).show();
+                }
+
+
+                else {
+                    firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (!task.isSuccessful()) {
+                                loadingDialog.dismiss();
+                                Toast.makeText(LoginActivity.this, "wrong mail or password" + task.getException(), Toast.LENGTH_LONG).show();
+                            } else if (task.isSuccessful()) {
+                                getData();
+
+                            }
+                        }
+                    });
 
                 }
 
@@ -94,5 +114,28 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+    }
+    private void getData(){
+        final String user_m=etLoginEmail.getText().toString().trim();
+        myRef=  FirebaseDatabase.getInstance().getReference().child("SubAdmin");
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for(DataSnapshot dataSnapshot1:dataSnapshot.getChildren()){
+                    if(user_m.equals(dataSnapshot1.child("Mail").getValue(String.class))) {
+                        setAdminEmail(LoginActivity.this,user_m);
+                   startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                        finish();
+                        loadingDialog.dismiss();
+                        break;
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 }

@@ -8,6 +8,12 @@
         android:id="@+id/_user"
         android:title="User"/>
     <item
+        android:id="@+id/add_sub_Admin"
+        android:title="Add Sub Admin"/>
+    <item
+        android:id="@+id/setting_account"
+        android:title="Setting"/>
+    <item
         android:id="@+id/view_order"
         android:title="View Order"/>
     <item
