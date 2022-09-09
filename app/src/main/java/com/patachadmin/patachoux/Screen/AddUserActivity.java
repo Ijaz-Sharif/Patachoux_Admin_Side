@@ -56,7 +56,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AddUserActivity extends AppCompatActivity {
-    private EditText etRegisterEmail,et_user_name, etRegisterPassword, etRegisterConfirmPassword,et_register_address,et_user_number;
+    private EditText etRegisterEmail,et_user_name, etRegisterPassword, etRegisterConfirmPassword,
+            et_city,et_postal_code,et_register_address,et_user_number,et_code;
     private FirebaseAuth firebaseAuth;
 
     DatabaseReference myRef;
@@ -67,17 +68,17 @@ public class AddUserActivity extends AppCompatActivity {
     StorageReference mRef;
     private Uri imgUri =null;
     ArrayList<String> userList =new ArrayList<String>();
-    public static final String NOTIFICATION_CHANNEL_ID = "10001" ;
-    private final static String default_notification_channel_id = "default" ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_user);
         mRef= FirebaseStorage.getInstance().getReference("profile_images");
-
+        et_postal_code=findViewById(R.id.et_postal_code);
+        et_city=findViewById(R.id.et_city);
         imageView=findViewById(R.id.userPic);
         et_user_number=findViewById(R.id.et_user_number);
         et_register_address=findViewById(R.id.et_register_address);
+        et_code=findViewById(R.id.et_code);
         /////loading dialog
         loadingDialog=new Dialog(this);
         loadingDialog.setContentView(R.layout.loading_progress_dialog);
@@ -195,6 +196,8 @@ public class AddUserActivity extends AppCompatActivity {
         if (email.isEmpty()) etRegisterEmail.setError("Enter email!");
         else if (imgUri==null) Toast.makeText(AddUserActivity.this,"select your image",Toast.LENGTH_LONG).show();
         else if (register_address.isEmpty()) et_user_name.setError("Enter address!");
+        else if (et_city.getText().toString().isEmpty()) et_city.setError("Enter City!");
+        else if (et_postal_code.getText().toString().isEmpty()) et_postal_code.setError("Enter Postal Code!");
         else if (user_number.isEmpty()) et_user_name.setError("Enter phone number!");
         else if (name.isEmpty()) et_user_name.setError("Enter name!");
         else if (!email.contains("@")||!email.contains(".")) etRegisterEmail.setError("Enter valid email!");
