@@ -5,6 +5,7 @@ import static com.patachadmin.patachoux.Utils.Constant.getAdminPassword;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import android.app.Dialog;
 import android.os.Build;
@@ -25,6 +26,7 @@ public class UpdateAdminPasswordActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_admin_password);
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         /////loading dialog
         loadingDialog=new Dialog(this);
         loadingDialog.setContentView(R.layout.loading_progress_dialog);

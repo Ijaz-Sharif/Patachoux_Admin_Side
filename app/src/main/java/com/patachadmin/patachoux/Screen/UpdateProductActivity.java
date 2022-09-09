@@ -3,6 +3,7 @@ package com.patachadmin.patachoux.Screen;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import android.app.Dialog;
 import android.content.ContentResolver;
@@ -39,6 +40,7 @@ public class UpdateProductActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_product);
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         product_des=findViewById(R.id.product_des);
         product_price=findViewById(R.id.product_price);
         imageView=findViewById(R.id.image);

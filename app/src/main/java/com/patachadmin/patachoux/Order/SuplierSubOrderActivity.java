@@ -4,6 +4,7 @@ import static com.patachadmin.patachoux.Order.SplierMainActivity.suplierOrderLis
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.cardview.widget.CardView;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -49,6 +50,7 @@ public class SuplierSubOrderActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_suplier_sub_order);
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         price_text=findViewById(R.id.price_text);
         user_number=findViewById(R.id.user_number);
         user_address=findViewById(R.id.user_address);

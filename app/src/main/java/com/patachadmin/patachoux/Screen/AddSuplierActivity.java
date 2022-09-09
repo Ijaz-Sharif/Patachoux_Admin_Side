@@ -3,6 +3,7 @@ package com.patachadmin.patachoux.Screen;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import android.app.Dialog;
 import android.os.Build;
@@ -34,6 +35,7 @@ public class AddSuplierActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_suplier);
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
         /////loading dialog
         loadingDialog=new Dialog(this);

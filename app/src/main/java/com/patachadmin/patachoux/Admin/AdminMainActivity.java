@@ -5,6 +5,7 @@ import static com.patachadmin.patachoux.Utils.Constant.setUserLoginStatus;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -54,6 +55,7 @@ public class AdminMainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_main);
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         /////loading dialog
         loadingDialog=new Dialog(this);
         loadingDialog.setContentView(R.layout.loading_progress_dialog);
@@ -177,38 +179,4 @@ public class AdminMainActivity extends AppCompatActivity {
 
 
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main1, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        switch (id){
-            case R.id.logoutUser:
-                setUserLoginStatus(AdminMainActivity.this,false);
-                startActivity(new Intent(AdminMainActivity.this, LoginActivity.class)
-                        .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
-                return true;
-            case R.id._suplier:
-                startActivity(new Intent(AdminMainActivity.this, SuplierActivity.class));
-            case R.id.add_sub_Admin:
-                startActivity(new Intent(AdminMainActivity.this, AddSubAdminActivity.class));
-            case R.id._user:
-                startActivity(new Intent(AdminMainActivity.this, UserActivity.class));
-                return true;
-            case R.id.setting_account:
-                startActivity(new Intent(AdminMainActivity.this, UpdateAdminPasswordActivity.class));
-                return true;
-            case R.id.view_order:
-                startActivity(new Intent(AdminMainActivity.this, SplierMainActivity.class));
-                return true;
-
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
 }

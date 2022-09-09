@@ -7,6 +7,7 @@ import static com.patachadmin.patachoux.Utils.Constant.setUserLoginStatus;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import android.app.Dialog;
 import android.content.Intent;
@@ -26,6 +27,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.patachadmin.patachoux.Admin.AdminActivity;
 import com.patachadmin.patachoux.Admin.AdminMainActivity;
 import com.patachadmin.patachoux.R;
 
@@ -39,7 +41,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         firebaseAuth = FirebaseAuth.getInstance();
-
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
         /////loading dialog
         loadingDialog=new Dialog(this);
@@ -85,7 +87,7 @@ public class LoginActivity extends AppCompatActivity {
 
                     setAdminEmail(LoginActivity.this,email);
                     setAdminPassword(LoginActivity.this,password);
-                    startActivity(new Intent(getApplicationContext(), AdminMainActivity.class));
+                    startActivity(new Intent(getApplicationContext(), AdminActivity.class));
                     finish();
 
                 }
