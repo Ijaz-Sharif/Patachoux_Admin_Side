@@ -26,7 +26,7 @@ import java.util.ArrayList;
 
 public class AddSuplierActivity extends AppCompatActivity {
     private Dialog loadingDialog;
-    private EditText etRegisterEmail,et_user_name, etRegisterPassword, etRegisterConfirmPassword;
+    private EditText etRegisterEmail,et_user_name, etRegisterPassword, etRegisterConfirmPassword,et_number,et_name;
     private FirebaseAuth firebaseAuth;
     DatabaseReference myRef;
     ArrayList<String> suplierList =new ArrayList<String>();
@@ -47,6 +47,8 @@ public class AddSuplierActivity extends AppCompatActivity {
         etRegisterPassword = findViewById(R.id.et_register_password);
         etRegisterConfirmPassword = findViewById(R.id.et_register_confirm_password);
         et_user_name = findViewById(R.id.et_user_name);
+        et_name=findViewById(R.id.et_name);
+        et_number=findViewById(R.id.et_number);
     }
 
     @Override
@@ -68,6 +70,8 @@ public class AddSuplierActivity extends AppCompatActivity {
     private boolean validate(String email, String name, String password, String confirm_password) {
         if (email.isEmpty()) etRegisterEmail.setError("Enter email!");
         else if (name.isEmpty()) et_user_name.setError("Enter name!");
+        else if (et_number.getText().toString().isEmpty()) et_number.setError("Enter number!");
+        else if (et_name.getText().toString().isEmpty()) et_name.setError("Enter First name!");
         else if (!email.contains("@")||!email.contains(".")) etRegisterEmail.setError("Enter valid email!");
         else if (password.isEmpty()) etRegisterPassword.setError("Enter password!");
         else if (password.length()<6) etRegisterPassword.setError("Password must be at least 6 characters!");
@@ -102,6 +106,8 @@ public class AddSuplierActivity extends AppCompatActivity {
         myRef=  FirebaseDatabase.getInstance().getReference("Suplier").child(et_user_name.getText().toString());
         myRef.child("Name").setValue(et_user_name.getText().toString());
         myRef.child("Mail").setValue(etRegisterEmail.getText().toString());
+        myRef.child("Number").setValue(et_number.getText().toString());
+        myRef.child("FirstName").setValue(et_name.getText().toString());
         loadingDialog.dismiss();
         finish();
     }

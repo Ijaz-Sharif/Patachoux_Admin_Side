@@ -73,7 +73,9 @@ public class SuplierActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot postSnapshot : snapshot.getChildren()) {
                     suplierArrayList.add(new Suplier(postSnapshot.child("Name").getValue(String.class)
-                            ,postSnapshot.child("Mail").getValue(String.class)));
+                            ,postSnapshot.child("Mail").getValue(String.class)
+                    ,postSnapshot.child("FirstName").getValue(String.class)
+                            ,postSnapshot.child("Number").getValue(String.class)));
 
                 }
                 arrayAdapter =new ArrayAdapter();
