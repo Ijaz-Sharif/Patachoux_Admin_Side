@@ -17,9 +17,9 @@
             android:id="@+id/image"
             android:layout_width="90dp"
             android:layout_height="90dp"
-            android:src="@drawable/profile_icon"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="10dp" />
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/profile_icon" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_toRightOf="@id/image"

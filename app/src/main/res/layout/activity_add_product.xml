@@ -5,10 +5,46 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/yellow"
-    tools:context=".Screen.AddProductActivity">
+    android:orientation="vertical"
+    tools:context=".Screens.AddProductActivity">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@color/black"
+        android:layout_height="60dp">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:onClick="finish"
+            android:layout_marginLeft="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/arrow_back" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:gravity="center"
+            android:text="Add Product"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+
+        >
+
         <LinearLayout
             android:layout_width="match_parent"
             android:orientation="vertical"
@@ -32,7 +68,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/product_name"
                     android:layout_width="match_parent"
-                    android:inputType="textEmailAddress"
+
                     android:layout_height="wrap_content" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -48,25 +84,10 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/product_des"
                     android:layout_width="match_parent"
-                    android:inputType="textEmailAddress"
                     android:layout_height="wrap_content" />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/input_product_price"
-                android:layout_margin="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Product Price"
-                android:inputType="number"
-                tools:ignore="HardcodedText">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/product_price"
-                    android:layout_width="match_parent"
-                    android:inputType="textEmailAddress"
-                    android:layout_height="wrap_content" />
-            </com.google.android.material.textfield.TextInputLayout>
             <Button
                 android:layout_width="150dp"
                 android:layout_height="50dp"

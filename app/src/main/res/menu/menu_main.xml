@@ -2,11 +2,8 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/_suplier"
-        android:title="Suplier"/>
-    <item
-        android:id="@+id/_user"
-        android:title="User"/>
+        android:id="@+id/view_suplier"
+        android:title="View Suplier"/>
     <item
         android:id="@+id/view_order"
         android:title="View Order"/>

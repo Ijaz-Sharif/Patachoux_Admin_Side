@@ -4,12 +4,12 @@ plugins {
 }
 
 android {
-    compileSdk 32
+    compileSdk 33
 
     defaultConfig {
         applicationId "com.patachadmin.patachou"
-        minSdk 21
-        targetSdk 32
+        minSdk 22
+        targetSdk 33
         versionCode 1
         versionName "1.0"
 
@@ -42,9 +42,17 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth:21.0.1'
     implementation 'com.google.firebase:firebase-database:20.0.3'
     implementation 'com.google.firebase:firebase-storage:19.1.1'
+
+
+    implementation 'com.google.firebase:firebase-messaging:20.1.0'
+
+    implementation 'com.google.firebase:firebase-messaging-directboot:20.2.0'
     implementation 'com.squareup.picasso:picasso:2.5.2'
+    implementation 'dev.dworks.libs:volleyplus:+'
 
     //dextier permission
     implementation 'com.karumi:dexter:4.2.0'
 
+    // circular image
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
 }
